@@ -22,7 +22,7 @@ function AppRoute() {
         <Route path="forEvent" element={<ProtectedRoute component={Layout} />}>
           <Route path="adminPanel" element={<AdminPanel />} />
           <Route path="changePassword" element={<ChangePassword />} />
-          <Route path="speakers" element={<Speakers />} />
+          <Route path="agents" element={<Speakers />} />
           <Route path="managerMainSection" element={<HeroSection />} />
         </Route>
       </Routes>

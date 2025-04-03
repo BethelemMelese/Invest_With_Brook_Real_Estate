@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import image from "../images/Events-amico-purpule.png";
+import image from "../images/logo-houzez-color [Recovered].png";
 import { api } from "../polices/api/axiosConfig";
 
 const TopBar = ({ ...props }) => {
@@ -23,9 +23,9 @@ const TopBar = ({ ...props }) => {
       <section className="header-section">
         <div className="header-content">
           <div className="header-title">
-            <h2>Grand Habesha Business Event</h2>
+            <h2>Brook Real Estate</h2>
             <p>
-              Expand your network and grow your business with industry leaders.
+            Invest in Dubai's Future, from Addis Ababa: With Brook Real Estate.
             </p>
           </div>
           <div className="header-image">
@@ -47,11 +47,11 @@ const TopBar = ({ ...props }) => {
                 </li>
                 <li>
                   <NavLink
-                    to="/forEvent/speakers"
+                    to="/forEvent/agents"
                     className="nav-item"
                     onClick={toggleMenu}
                   >
-                    Manager Speakers
+                    Manager Agents
                   </NavLink>
                 </li>
                 <li>

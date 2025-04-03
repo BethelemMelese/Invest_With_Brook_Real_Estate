@@ -374,10 +374,10 @@ body {
 }
 
 .header-image img {
-  max-width: 10%;
-  height: auto;
+  width: 40%;
+  height: 40%;
   margin-left: 40%;
-  margin-top: -9%;
+  margin-top: -8%;
 }
 
 /* nav bar */
@@ -414,12 +414,15 @@ nav {
 }
 
 .nav-item-menu .nav-item:hover {
-  border-bottom: 2px solid #e90606;
-  color: #000;
+  background: #fff;
+  color: #e90606;
+  border: 1px solid #e90606;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 .nav-item-menu .active {
-  background: #fbc02d;
+  background: #e90606;
   color: #fff;
   padding: 8px;
   border-radius: 5px;
@@ -518,7 +521,7 @@ nav {
 }
 
 .login-form .login_unlocked {
-  background: #007bff;
+  background: #e90606;
   color: white;
 }
 
@@ -528,8 +531,9 @@ nav {
 }
 
 .login-form .login_unlocked:hover {
-  background: #fbc02d;
-  color: #000;
+  background: #fff;
+  color: #e90606;
+  border: 1px solid #e90606;
 }
 
 /* No Permission */

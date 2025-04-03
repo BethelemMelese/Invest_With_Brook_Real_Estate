@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { appUrl } from "../../appurl";
 import axios from "axios";
 import Notification from "../../commonComponent/notification";
-import image from "../../images/Tablet login-rafiki.png";
+import image from "../../images/logo-houzez-color [Recovered]1.png";
 import { api } from "../../polices/api/axiosConfig";
 import { useAuth } from "../../polices/AuthContext";
 
