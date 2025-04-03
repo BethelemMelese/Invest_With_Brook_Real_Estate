@@ -294,7 +294,7 @@ const Home = () => {
         <Notification notify={notify} setNotify={setNotify} />
       </section>
       <div className="copyrightholder">
-        <p>&copy; 2025 Grand Habesha Business Event. All rights reserved</p>
+        <p>&copy; {new Date().getFullYear()} Brook Real Estate. All rights reserved</p>
       </div>
     </div>
   );
