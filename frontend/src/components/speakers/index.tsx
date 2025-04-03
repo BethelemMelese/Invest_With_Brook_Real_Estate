@@ -41,7 +41,7 @@ interface TableParams {
   filters?: Parameters<GetProp<TableProps, "onChange">>[1];
 }
 
-const Speakers = () => {
+const agents = () => {
   const [dataSource, setDataSource] = useState<any>([]);
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);
@@ -141,7 +141,7 @@ const Speakers = () => {
   //for get all data
   const onFetchAdmin = () => {
     api
-      .get(`speakers`)
+      .get(`agents`)
       .then((res) => {
         setLoading(false);
         setDataSource(res.data);
@@ -189,7 +189,7 @@ const Speakers = () => {
       cancelText: "No",
       onOk() {
         api
-          .delete(`speakers/${value}`)
+          .delete(`agents/${value}`)
           .then((response) => {
             onDeleteSuccess(response.data);
           })
@@ -209,7 +209,7 @@ const Speakers = () => {
     <div className="app_container">
       {viewMode == "view" && (
         <Card
-          title={<h2>List of Speakers</h2>}
+          title={<h2>List of agents</h2>}
           extra={
             <Button
               variant="contained"
@@ -263,4 +263,4 @@ const Speakers = () => {
   );
 };
 
-export default Speakers;
+export default agents;

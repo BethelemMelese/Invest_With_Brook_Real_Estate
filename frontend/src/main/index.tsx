@@ -93,7 +93,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(appUrl + "speakers/allSpeaker")
+      .get(appUrl + "agents/allSpeaker")
       .then((response) => setResponse(response.data))
       .catch((error) => onFetchError(error.response.data.message));
   }, []);
@@ -131,7 +131,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="agents" className="speakers">
+      <section id="agents" className="agents">
         <h2>What to Expect</h2>
         <div className="speaker-list">
           {response.length != 0 &&

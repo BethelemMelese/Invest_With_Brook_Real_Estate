@@ -9,7 +9,7 @@ const {
   addSpeakers,
   updateSpeakers,
   deleteSpeakers,
-} = require("../controllers/speaker.controller.js");
+} = require("../controllers/agents.controller.js");
 const { authenticateUser } = require("../controllers/admin.controller.js");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const cloudinary = require("../config/cloudinary.js");

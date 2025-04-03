@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 const admin = require("./routes/admin.router.js");
 const user = require("./routes/user.router.js");
-const speaker = require("./routes/speakers.router.js");
+const agent = require("./routes/agents.router.js");
 const heroSection = require("./routes/heroSection.router.js");
 
 // configuration file
@@ -23,8 +23,7 @@ var corsOptions = {
 };
 
 const allowedOrigins = [
-  "https://investwithbrookrealestate.netlify.app/", // Add this if you still use Netlify preview
-  "http://localhost:3000",
+  "https://investwithbrookrealestate.netlify.app"
 ];
 
 app.use(express.json());
@@ -72,5 +71,5 @@ mongoose
 // routes
 app.use("/api/admin", admin);
 app.use("/api/users", user);
-app.use("/api/speakers", speaker);
+app.use("/api/agents", agent);
 app.use("/api/heroSections", heroSection);

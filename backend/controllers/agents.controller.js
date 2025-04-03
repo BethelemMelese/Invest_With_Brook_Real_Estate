@@ -1,4 +1,4 @@
-const Speaker = require("../models/speakers.model.js");
+const Speaker = require("../models/agents.model.js");
 const dotenv = require("dotenv");
 const fs = require("fs-extra");
 

@@ -112,7 +112,7 @@ const AddSpeaker = ({ ...props }) => {
           formData.append("speakerRole", values.speakerRole);
           formData.append("speakerDescription", values.speakerDescription);
           api
-            .post("speakers", formData)
+            .post("agents", formData)
             .then(() => onCreateSuccess())
             .catch((error) => onCreateError(error.response.data.message));
         }
@@ -127,7 +127,7 @@ const AddSpeaker = ({ ...props }) => {
         formData.append("speakerRole", values.speakerRole);
         formData.append("speakerDescription", values.speakerDescription);
         api
-          .put(`speakers/${selectedSpeaker.id}`, formData)
+          .put(`agents/${selectedSpeaker.id}`, formData)
           .then(() => onUpdateSuccess())
           .catch((error) => onUpdateError(error.response.data.message));
       }
