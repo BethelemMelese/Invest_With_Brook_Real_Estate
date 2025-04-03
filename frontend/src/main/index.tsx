@@ -131,7 +131,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="agents" className="agents">
+      <section id="agents" className="speakers">
         <h2>What to Expect</h2>
         <div className="speaker-list">
           {response.length != 0 &&
