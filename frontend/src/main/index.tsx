@@ -255,13 +255,12 @@ const Home = () => {
               </div>
 
               {isSubmitting ? (
-                <Button
-                  className="submit-button"
-                  variant="contained"
+                <button
+                  className="progress"
                   disabled={isSubmitting}
                 >
                   Submitting...
-                </Button>
+                </button>
               ) : (
                 <button type="submit" className="submit-button">
                   Submit

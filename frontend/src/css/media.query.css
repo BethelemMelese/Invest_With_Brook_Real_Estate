@@ -33,7 +33,7 @@
     margin: 0px auto;
     margin-right: 60px;
   }
-  
+
   .top-bar-logo img {
     width: 60%;
     height: 60%;
@@ -73,7 +73,7 @@
   .speaker-card {
     margin: 0px auto;
     margin-top: 20px;
-    scroll-snap-align:end;
+    scroll-snap-align: end;
   }
 
   .speaker-list {
@@ -116,6 +116,13 @@
     width: 150%;
     margin: 0px auto;
     margin-left: 100%;
+    margin-top: 30px;
+  }
+
+  .progress {
+    width: 150%;
+    margin: 0px auto;
+    margin-left: 10rem;
     margin-top: 30px;
   }
 }
