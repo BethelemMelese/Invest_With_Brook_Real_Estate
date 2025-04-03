@@ -23,8 +23,8 @@ var corsOptions = {
 };
 
 const allowedOrigins = [
-  // "https://investwithbrookrealestate.netlify.app"
-  "http://localhost:3000/"
+  "https://investwithbrookrealestate.netlify.app"
+  // "http://localhost:3000/"
 ];
 
 app.use(express.json());
