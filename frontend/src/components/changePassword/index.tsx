@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { appUrl } from "../../appurl";
-import axios from "axios";
 import Notification from "../../commonComponent/notification";
-import { userService } from "../../polices/userService";
 import { api } from "../../polices/api/axiosConfig";
 
 const ChangePassword = () => {

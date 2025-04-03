@@ -19,7 +19,6 @@ const Home = () => {
     country: "",
     city: "",
     profession: "",
-    attendeeType: "",
   });
 
   const [notify, setNotify] = useState({
@@ -69,8 +68,6 @@ const Home = () => {
     if (!formData.country) newErrors.country = "Country is required";
     if (!formData.city) newErrors.city = "City is required";
     if (!formData.profession) newErrors.profession = "Profession is required";
-    if (!formData.attendeeType)
-      newErrors.attendeeType = "Attendee Type is required";
     else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email))
       newErrors.email = "Invalid email format";
     setErrors(newErrors);
@@ -254,24 +251,6 @@ const Home = () => {
                     onChange={handleChange}
                   />
                   {errors.city && <span className="error">{errors.city}</span>}
-                </div>
-
-                <div className="form-group">
-                  <select
-                    className="input-field"
-                    name="attendeeType"
-                    value={formData.attendeeType}
-                    onChange={(e) => handleChange(e)}
-                  >
-                    <option value="" disabled selected>
-                      Choose Attendee Type
-                    </option>
-                    <option value="Participant">Participant</option>
-                    <option value="Vender">Vender</option>
-                  </select>
-                  {errors.attendeeType && (
-                    <span className="error">{errors.attendeeType}</span>
-                  )}
                 </div>
               </div>
 

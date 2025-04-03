@@ -7,8 +7,6 @@ import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Notification from "../../commonComponent/notification";
 import { Card, Upload, Button as ButtonAnt } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import { appUrl } from "../../appurl";
-import axios from "axios";
 import Controls from "../../commonComponent/Controls";
 import { api } from "../../polices/api/axiosConfig";
 

@@ -1,12 +1,9 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { appUrl } from "../../appurl";
 import Notification from "../../commonComponent/notification";
 import { Card, GetProp, Modal, Space, Table, TableProps } from "antd";
 import { Avatar, Button, IconButton, Tooltip } from "@mui/material";
 import AddHeroSection from "./create";
 import { EditOutlined } from "@mui/icons-material";
-import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { api } from "../../polices/api/axiosConfig";
 

@@ -5,8 +5,6 @@ import { DownOutlined } from "@ant-design/icons";
 import { CSVLink } from "react-csv";
 import exportPDF from "../../service/importPdf";
 import { PDF } from "../..//service/model/pdf";
-import axios from "axios";
-import { appUrl } from "../../appurl";
 import Notification from "../../commonComponent/notification";
 import { api } from "../../polices/api/axiosConfig";
 
@@ -75,11 +73,6 @@ const AdminPanel = ({ ...props }) => {
     {
       title: "Profession",
       dataIndex: "profession",
-      sorter: true,
-    },
-    {
-      title: "Attendee Type",
-      dataIndex: "attendeeType",
       sorter: true,
     },
   ];
@@ -155,15 +148,11 @@ const AdminPanel = ({ ...props }) => {
         name: "Profession",
         key: "profession",
       },
-      {
-        name: "Attendee Type",
-        key: "attendeeType",
-      },
     ];
     const pdfConfig: PDF = {
-      fileName: "Grand Habesha Business Event",
+      fileName: "Brook Real Estate",
       size: "A3",
-      title: "List of Participant",
+      title: "List of Agents",
       orientation: "landscape",
       unit: "pt",
     };
@@ -200,10 +189,6 @@ const AdminPanel = ({ ...props }) => {
       label: "Profession",
       key: "profession",
     },
-    {
-      label: "Attendee Type",
-      key: "attendeeType",
-    },
   ];
 
   const menu = (
@@ -217,8 +202,8 @@ const AdminPanel = ({ ...props }) => {
           key: "2",
           label: (
             <CSVLink
-              filename="Grand Habesha Business Event"
-              title="List of Participant"
+              filename="Brook Real Estate"
+              title="List of Agents"
               data={execl}
               headers={Execlheaders}
             >
@@ -232,7 +217,7 @@ const AdminPanel = ({ ...props }) => {
   return (
     <div className="app_container">
       <Card
-        title={<h2>List of Participant</h2>}
+        title={<h2>List of Agents</h2>}
         extra={
           <Dropdown
             overlay={menu}

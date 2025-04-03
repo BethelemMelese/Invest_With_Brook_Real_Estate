@@ -12,7 +12,6 @@ const GetAllUser = async (req, res) => {
         profession: values.profession,
         country: values.country,
         city: values.city,
-        attendeeType:values.attendeeType
       };
     });
 
@@ -33,7 +32,6 @@ const RegisterUser = async (req, res) => {
       profession: req.body.profession,
       country: req.body.country,
       city: req.body.city,
-      attendeeType:req.body.attendeeType,
     });
 
     res.status(200).json({
@@ -44,7 +42,6 @@ const RegisterUser = async (req, res) => {
       profession: user.profession,
       country: user.country,
       city: user.city,
-      attendeeType:user.attendeeType,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

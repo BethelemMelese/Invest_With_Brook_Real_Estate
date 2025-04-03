@@ -34,10 +34,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please insert City"],
     },
-    attendeeType: {
-      type: String,
-      required: [true, "Please insert Attendee Type"],
-    },
   },
   { timestamp: true }
 );
