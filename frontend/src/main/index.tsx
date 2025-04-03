@@ -1,4 +1,4 @@
-import eventForm from "../images/photo_2025-02-20_20-29-55.jpg";
+import eventForm from "../images/logo-03.png";
 import Navbar from "../menu/nabBar";
 import Notification from "../commonComponent/notification";
 import React, { useEffect, useState } from "react";

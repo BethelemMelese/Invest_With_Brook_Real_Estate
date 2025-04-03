@@ -41,7 +41,7 @@ interface TableParams {
   filters?: Parameters<GetProp<TableProps, "onChange">>[1];
 }
 
-const agents = () => {
+const Agents = () => {
   const [dataSource, setDataSource] = useState<any>([]);
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);
@@ -263,4 +263,4 @@ const agents = () => {
   );
 };
 
-export default agents;
+export default Agents;
