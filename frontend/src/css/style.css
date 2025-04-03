@@ -15,7 +15,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(-50deg, #ffff, #ffff, #ffff, #ffff, #0b3289);
+  background: linear-gradient(-50deg, #ffff, #ffff, #ffff, #ffff, #e90606);
   height: 70vh;
   padding: 10% 10%;
   padding-left: 15%;
@@ -43,7 +43,8 @@ body {
 .hero-btn {
   list-style: none;
   text-decoration: none;
-  background: #0b3289;
+  /* background: #e90606; */
+  background: #e90606;
   color: #ffff;
   padding: 12px 24px;
   font-size: 1rem;
@@ -54,7 +55,9 @@ body {
 }
 
 .hero-btn:hover {
-  background: #fbc02d;
+  background: #fff;
+  color: #e90606;
+  border: 1px solid #e90606;
 }
 
 /* Illustration */
@@ -90,8 +93,8 @@ body {
 }
 
 .top-bar-logo img {
-  width: 30%;
-  height: 30%;
+  width: 50%;
+  height: 50%;
 }
 
 .navbar {
@@ -111,9 +114,10 @@ body {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 50px;
-  padding: 0;
+  gap: 30px;
+  padding: 10;
   margin-right: 10%;
+  margin-top: 20px;
 }
 
 /* Menu Items */
@@ -125,13 +129,15 @@ body {
   font-family: "Playfair Display", serif;
   color: #000;
   transition: color 0.3s ease;
-  width: 100px;
+  width: 140px;
+  padding: 5px;
 }
 
 .nav-links li:hover {
   color: #000;
   border-radius: 2px;
-  border-bottom: 2px solid #0b3289;
+  border-bottom: 2px solid #e90606;
+  background: #e9060616;
 }
 
 /* sponsored  */
@@ -305,7 +311,7 @@ body {
 
 .submit-button {
   /* background: #47d50f; */
-  background: #0b3289;
+  background: #e90606;
   color: white;
   width: 50%;
   margin-top: 30px;
@@ -317,7 +323,9 @@ body {
 }
 
 .submit-button:hover {
-  background: #fbc02d;
+  background: #fff;
+  color: #e90606;
+  border: 1px solid #e90606;
 }
 
 /* Admin Panel */
@@ -333,12 +341,12 @@ body {
 .header-content {
   background: linear-gradient(
     50deg,
-    #0b3289,
+    #e90606,
     #ffff,
     #ffff,
     #ffff,
     #ffff,
-    #0b3289
+    #e90606
   );
   height: 1vh;
   padding: 4%;
@@ -406,7 +414,7 @@ nav {
 }
 
 .nav-item-menu .nav-item:hover {
-  border-bottom: 2px solid #0b3289;
+  border-bottom: 2px solid #e90606;
   color: #000;
 }
 
@@ -500,7 +508,7 @@ nav {
   border-radius: 5px;
 }
 
-.login-form button{
+.login-form button {
   width: 100%;
   padding: 10px;
   font-size: 16px;

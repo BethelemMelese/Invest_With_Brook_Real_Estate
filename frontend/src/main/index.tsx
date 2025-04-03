@@ -1,4 +1,3 @@
-import image from "../images/photo_2025-02-15_23-54-03.jpg";
 import eventForm from "../images/photo_2025-02-20_20-29-55.jpg";
 import Navbar from "../menu/nabBar";
 import Notification from "../commonComponent/notification";
@@ -132,8 +131,8 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="speakers" className="speakers">
-        <h2>Expert Speakers</h2>
+      <section id="agents" className="speakers">
+        <h2>What to Expect</h2>
         <div className="speaker-list">
           {response.length != 0 &&
             response.map((item: any) => {
@@ -294,10 +293,6 @@ const Home = () => {
         </div>
         <Notification notify={notify} setNotify={setNotify} />
       </section>
-      <div className="sponsored-container">
-        <h3>Sponsored By</h3>
-        <img src={image} alt="Sponsor" className="sponsor-logo" />
-      </div>
       <div className="copyrightholder">
         <p>&copy; 2025 Grand Habesha Business Event. All rights reserved</p>
       </div>
