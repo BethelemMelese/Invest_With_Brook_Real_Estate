@@ -4,6 +4,7 @@ import Notification from "../commonComponent/notification";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { appUrl } from "../appurl";
+import ReactPlayer from "react-player";
 
 const Home = () => {
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -25,7 +26,6 @@ const Home = () => {
     message: "",
     type: "",
   });
-
 
   const onRegisterSuccess = (response: any) => {
     setNotify({
@@ -114,8 +114,9 @@ const Home = () => {
                     </a>
                   </div>
 
-                  <div className="hero-image">
-                    <img src={item.heroImage} alt="Business Event" />
+                  <div className="hero-video">
+                    <ReactPlayer autoplay url={item.heroUrl} />
+                    {/* <img src={item.heroImage} alt="Business Event" /> */}
                   </div>
                 </>
               );
@@ -136,7 +137,9 @@ const Home = () => {
                     className="speaker-img"
                   />
                   <h3>{item.title}</h3>
-                  <p className="speaker_Description">{item.speakerDescription}</p>
+                  <p className="speaker_Description">
+                    {item.speakerDescription}
+                  </p>
                 </div>
               );
             })}
@@ -206,10 +209,7 @@ const Home = () => {
               </div>
 
               {isSubmitting ? (
-                <button
-                  className="progress"
-                  disabled={isSubmitting}
-                >
+                <button className="progress" disabled={isSubmitting}>
                   Submitting...
                 </button>
               ) : (
@@ -223,7 +223,10 @@ const Home = () => {
         <Notification notify={notify} setNotify={setNotify} />
       </section>
       <div className="copyrightholder">
-        <p>&copy; {new Date().getFullYear()} Brook Real Estate. All rights reserved</p>
+        <p>
+          &copy; {new Date().getFullYear()} Brook Real Estate. All rights
+          reserved
+        </p>
       </div>
     </div>
   );
