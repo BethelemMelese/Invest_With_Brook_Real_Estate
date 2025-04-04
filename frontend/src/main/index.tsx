@@ -63,11 +63,7 @@ const Home = () => {
     let newErrors: { [key: string]: string } = {};
     if (!formData.firstName) newErrors.firstName = "First Name is required";
     if (!formData.lastName) newErrors.lastName = "Last Name is required";
-    if (!formData.email) newErrors.email = "Email is required";
     if (!formData.phone) newErrors.phone = "Phone Number is required";
-    if (!formData.country) newErrors.country = "Country is required";
-    if (!formData.city) newErrors.city = "City is required";
-    if (!formData.profession) newErrors.profession = "Profession is required";
     else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email))
       newErrors.email = "Invalid email format";
     setErrors(newErrors);
@@ -141,7 +137,6 @@ const Home = () => {
                     className="speaker-img"
                   />
                   <h3>{item.title}</h3>
-                  <p>{item.speakerRole}</p>
                   <p className="speaker_Description">{item.speakerDescription}</p>
                 </div>
               );
@@ -194,9 +189,6 @@ const Home = () => {
                     value={formData.email}
                     onChange={handleChange}
                   />
-                  {errors.email && (
-                    <span className="error">{errors.email}</span>
-                  )}
                 </div>
 
                 <div className="form-group">
@@ -211,46 +203,6 @@ const Home = () => {
                   {errors.phone && (
                     <span className="error">{errors.phone}</span>
                   )}
-                </div>
-
-                <div className="form-group">
-                  <input
-                    className="input-field"
-                    type="text"
-                    name="profession"
-                    placeholder="Profession"
-                    value={formData.profession}
-                    onChange={handleChange}
-                  />
-                  {errors.profession && (
-                    <span className="error">{errors.profession}</span>
-                  )}
-                </div>
-
-                <div className="form-group">
-                  <input
-                    className="input-field"
-                    type="text"
-                    name="country"
-                    placeholder="Country"
-                    value={formData.country}
-                    onChange={handleChange}
-                  />
-                  {errors.country && (
-                    <span className="error">{errors.country}</span>
-                  )}
-                </div>
-
-                <div className="form-group">
-                  <input
-                    className="input-field"
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                    value={formData.city}
-                    onChange={handleChange}
-                  />
-                  {errors.city && <span className="error">{errors.city}</span>}
                 </div>
               </div>
 

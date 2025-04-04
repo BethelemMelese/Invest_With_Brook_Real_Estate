@@ -12,8 +12,7 @@ const getSpeakers = async (req, res) => {
       return {
         id: value._id,
         title: value.title,
-        speakerRole: value.speakerRole,
-        speakerDescription:value.speakerDescription,
+        speakerDescription: value.speakerDescription,
         speakerImage: value.speakerImage,
       };
     });
@@ -30,8 +29,7 @@ const getSpeakersForAll = async (req, res) => {
       return {
         id: value._id,
         title: value.title,
-        speakerRole: value.speakerRole,
-        speakerDescription:value.speakerDescription,
+        speakerDescription: value.speakerDescription,
         speakerImage: value.speakerImage,
       };
     });
@@ -53,8 +51,7 @@ const addSpeakers = async (req, res) => {
     } else {
       const formData = {
         title: req.body.title,
-        speakerRole: req.body.speakerRole,
-        speakerDescription:req.body.speakerDescription,
+        speakerDescription: req.body.speakerDescription,
         speakerImage: req.file.path,
       };
       const speaker = await Speaker.create(formData);
@@ -62,8 +59,7 @@ const addSpeakers = async (req, res) => {
       res.status(200).json({
         id: speaker._id,
         title: speaker.title,
-        speakerRole: speaker.speakerRole,
-        speakerDescription:speaker.speakerDescription,
+        speakerDescription: speaker.speakerDescription,
         speakerImage: speaker.speakerImage,
       });
     }
@@ -83,15 +79,13 @@ const updateSpeakers = async (req, res) => {
     if (speaker.speakerImage == req.body.file) {
       await Speaker.findByIdAndUpdate(id, {
         title: req.body.title,
-        speakerDescription:req.body.speakerDescription,
-        speakerRole: req.body.speakerRole,
+        speakerDescription: req.body.speakerDescription,
       });
     } else {
       await Speaker.findByIdAndUpdate(id, {
         title: req.body.title,
         speakerRole: req.body.speakerRole,
-        speakerDescription:req.body.speakerDescription,
-        speakerImage: req.file.path,
+        speakerDescription: req.body.speakerDescription,
       });
     }
 
@@ -99,9 +93,7 @@ const updateSpeakers = async (req, res) => {
     res.status(200).json({
       id: updatedSpeaker._id,
       title: updatedSpeaker.title,
-      speakerRole: updatedSpeaker.speakerRole,
-      speakerDescription:updatedSpeaker.speakerDescription,
-      speakerImage: updatedSpeaker.speakerImage,
+      speakerDescription: updatedSpeaker.speakerDescription,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
