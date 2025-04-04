@@ -31,12 +31,11 @@
 
   .top-bar-logo {
     margin: 0px auto;
-    margin-right: 60px;
+    margin-right: 40%;
   }
 
   .top-bar-logo img {
-    width: 60%;
-    height: 60%;
+    width: 100%;
   }
 
   .hero {
@@ -59,11 +58,11 @@
     width: 100%;
   }
 
-  .hero-image img {
+  .hero-video iframe {
     margin: 0px auto;
     text-align: center;
-    /* max-width: 100%; */
-    /* margin-top: 20px; */
+    max-width: 50%;
+    /* margin-left: 18%; */
   }
 
   .speakers {
@@ -80,11 +79,6 @@
     display: block;
     gap: 5px;
     margin: 0px auto;
-  }
-
-  .speaker-card img {
-    width: 150px;
-    height: 150px;
   }
 
   .form {
@@ -127,16 +121,3 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .speaker-card img {
-    width: 180px;
-    height: 180px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .speaker-card img {
-    width: 120px;
-    height: 120px;
-  }
-}
