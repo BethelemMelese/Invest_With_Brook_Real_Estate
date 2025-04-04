@@ -426,7 +426,7 @@ nav {
 .nav-item-menu .nav-item:hover {
   background: #fff;
   color: #e90606;
-  border: 1px solid #e90606;
+  /* border: 1px solid #e90606; */
   padding: 8px;
   border-radius: 5px;
 }

@@ -7,16 +7,15 @@ import { EditOutlined } from "@mui/icons-material";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { api } from "../../polices/api/axiosConfig";
 
+
 const { confirm } = Modal;
 
 interface ItemState {
   title: string;
-  herosectionRole: string;
 }
 
 const initialState: ItemState = {
   title: "",
-  herosectionRole: "",
 };
 
 type TablePaginationConfig = Exclude<
@@ -57,7 +56,6 @@ const HeroSection = () => {
     type: "",
   });
 
-  //   identify the columns that has to display on the table
   const columns: any = [
     {
       title: "Hero Image",
@@ -82,6 +80,11 @@ const HeroSection = () => {
     {
       title: "Sub Header Title",
       dataIndex: "subTitle",
+      sorter: true,
+    },
+    {
+      title: "Url Link",
+      dataIndex: "url",
       sorter: true,
     },
     {
@@ -163,28 +166,7 @@ const HeroSection = () => {
     });
   };
 
-  //   for delete the selected data using modal confirm dialog
-  const showConfirm = (value: any) => {
-    confirm({
-      title: "Do you want to delete these hero section?",
-      icon: <ExclamationCircleFilled />,
-      content: "You are unable to undo the deletion of this.",
-      okText: "Yes",
-      okType: "danger",
-      cancelText: "No",
-      onOk() {
-        api
-          .delete(`heroSections/${value}`)
-          .then((response) => {
-            onDeleteSuccess(response.data);
-          })
-          .catch((error) => onDeleteError(error.response.data.message));
-      },
-      onCancel() {},
-    });
-  };
 
-  //to fetch data using useEffect , when every time this page is load
   useEffect(() => {
     setLoading(true);
     onFetchAdmin();

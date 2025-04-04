@@ -66,8 +66,8 @@ const Agents = () => {
       render: (record: any) => {
         return (
           <>
-            {record.speakerImage != undefined ? (
-              <Avatar src={record.speakerImage} variant="circular"></Avatar>
+            {record.agentImage != undefined ? (
+              <Avatar src={record.agentImage} variant="circular"></Avatar>
             ) : (
               <Avatar />
             )}
@@ -174,7 +174,7 @@ const Agents = () => {
   //   for delete the selected data using modal confirm dialog
   const showConfirm = (value: any) => {
     confirm({
-      title: "Do you want to delete these speaker?",
+      title: "Do you want to delete these agent?",
       icon: <ExclamationCircleFilled />,
       content: "You are unable to undo the deletion of this.",
       okText: "Yes",
@@ -202,7 +202,7 @@ const Agents = () => {
     <div className="app_container">
       {viewMode == "view" && (
         <Card
-          title={<h2>List of agents</h2>}
+          title={<h2>List of Agent</h2>}
           extra={
             <Button
               variant="contained"
@@ -212,7 +212,7 @@ const Agents = () => {
                 setViewMode("new");
               }}
             >
-              Add Speaker
+              Add Agent
             </Button>
           }
           className="main-content"

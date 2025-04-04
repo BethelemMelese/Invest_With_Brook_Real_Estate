@@ -60,21 +60,6 @@ const AdminPanel = ({ ...props }) => {
       dataIndex: "phone",
       sorter: true,
     },
-    {
-      title: "Country",
-      dataIndex: "country",
-      sorter: true,
-    },
-    {
-      title: "City",
-      dataIndex: "city",
-      sorter: true,
-    },
-    {
-      title: "Profession",
-      dataIndex: "profession",
-      sorter: true,
-    },
   ];
 
   const handleTableChange: TableProps["onChange"] = (
@@ -107,7 +92,6 @@ const AdminPanel = ({ ...props }) => {
       });
   };
 
-  //to fetch data using useEffect , when everytime thise page is load
   useEffect(() => {
     setLoading(true);
     onFetchAdmin();
@@ -136,18 +120,6 @@ const AdminPanel = ({ ...props }) => {
         name: "Phone",
         key: "phone",
       },
-      {
-        name: "Country",
-        key: "country",
-      },
-      {
-        name: "City",
-        key: "city",
-      },
-      {
-        name: "Profession",
-        key: "profession",
-      },
     ];
     const pdfConfig: PDF = {
       fileName: "Brook Real Estate",
@@ -167,7 +139,7 @@ const AdminPanel = ({ ...props }) => {
   const Execlheaders = [
     {
       label: "label",
-      key: "fulllabel",
+      key: "fullName",
     },
     {
       label: "Email",
@@ -176,18 +148,6 @@ const AdminPanel = ({ ...props }) => {
     {
       label: "Phone",
       key: "phone",
-    },
-    {
-      label: "Country",
-      key: "country",
-    },
-    {
-      label: "City",
-      key: "city",
-    },
-    {
-      label: "Profession",
-      key: "profession",
     },
   ];
 

@@ -13,11 +13,13 @@ import { api } from "../../polices/api/axiosConfig";
 interface ItemState {
   headerTitle: string;
   subTitle: string;
+  url: string;
 }
 
 const initialState: ItemState = {
   headerTitle: "",
   subTitle: "",
+  url: "",
 };
 const AddHeroSection = ({ ...props }) => {
   const [viewMode, setViewMode] = useState(props.viewMode);
@@ -48,7 +50,7 @@ const AddHeroSection = ({ ...props }) => {
     setNotify({
       isOpen: true,
       type: "success",
-      message: "Hero Section is Successfully Added !",
+      message: "Hero Section is Successfully Added!",
     });
     setTimeout(() => {
       setIsSubmitting(false);
@@ -71,7 +73,7 @@ const AddHeroSection = ({ ...props }) => {
     setNotify({
       isOpen: true,
       type: "success",
-      message: "Hero Section is Successfully Updated !",
+      message: "Hero Section is Successfully Updated!",
     });
     setTimeout(() => {
       setIsSubmitting(false);
@@ -93,37 +95,42 @@ const AddHeroSection = ({ ...props }) => {
   const validationSchema = Yup.object().shape({
     headerTitle: Yup.string().required("Header Title is required"),
     subTitle: Yup.string().required("Sub Header Title is required"),
+    url: Yup.string().required("Url Link is required"),
   });
 
   const formik = useFormik({
     initialValues: selectedHeroSection,
     onSubmit: (values) => {
       if (viewMode == "new") {
-        if (fileList == null) {
-          setFileRequired(true);
-        } else {
-          setFileRequired(false);
-          setIsSubmitting(true);
-          const formData = new FormData();
-          formData.append("file", fileList);
-          formData.append("headerTitle", values.headerTitle);
-          formData.append("subTitle", values.subTitle);
-          api
-            .post("heroSections", formData)
-            .then(() => onCreateSuccess())
-            .catch((error) => onCreateError(error.response.data.message));
-        }
-      } else {
+        // if (fileList == null) {
+        //   setFileRequired(true);
+        // } else {
+        //   setFileRequired(false);
+        // const formData = new FormData();
+        // formData.append("file", fileList);
+        // formData.append("headerTitle", values.headerTitle);
+        // formData.append("subTitle", values.subTitle);
+        // }
         setIsSubmitting(true);
-        const formData = new FormData();
-        formData.append(
-          "file",
-          fileList == null ? selectedHeroSection.heroImage : fileList
-        );
-        formData.append("headerTitle", values.headerTitle);
-        formData.append("subTitle", values.subTitle);
         api
-          .put(`heroSections/${selectedHeroSection.id}`, formData)
+          .post("heroSections", values)
+          .then(() => onCreateSuccess())
+          .catch((error) => onCreateError(error.response.data.message));
+      } else {
+        // const formData = new FormData();
+        // formData.append(
+        //   "file",
+        //   fileList == null ? selectedHeroSection.heroImage : fileList
+        // );
+        // formData.append("headerTitle", values.headerTitle);
+        // formData.append("subTitle", values.subTitle);
+        // api
+        //   .put(`heroSections/${selectedHeroSection.id}`, formData)
+        //   .then(() => onUpdateSuccess())
+        //   .catch((error) => onUpdateError(error.response.data.message));
+        setIsSubmitting(true);
+        api
+          .put(`heroSections/${selectedHeroSection.id}`, values)
           .then(() => onUpdateSuccess())
           .catch((error) => onUpdateError(error.response.data.message));
       }
@@ -208,7 +215,20 @@ const AddHeroSection = ({ ...props }) => {
                 }
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
+              <Controls.Input
+                id="url"
+                label="Url Link"
+                multiline
+                {...formik.getFieldProps("url")}
+                error={
+                  formik.touched.url && formik.errors.url
+                    ? formik.errors.url
+                    : ""
+                }
+              />
+            </Grid>
+            {/* <Grid item xs={12}>
               <Upload
                 listType="picture"
                 onChange={(response: any) => beforeUpload(response.file)}
@@ -228,7 +248,7 @@ const AddHeroSection = ({ ...props }) => {
                   <span className="text-danger">Hero Image is required</span>
                 ) : null}
               </Upload>
-            </Grid>
+            </Grid> */}
           </Grid>
 
           <Grid item xs={12}>
@@ -247,7 +267,6 @@ const AddHeroSection = ({ ...props }) => {
                     className="send-btn"
                     variant="contained"
                     type="submit"
-                    onClick={validFile}
                   >
                     Send
                   </Button>
