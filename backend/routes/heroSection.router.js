@@ -26,8 +26,10 @@ const storage = new CloudinaryStorage({
 const upload = multer({ storage: storage });
 router.get("/", authenticateUser, getHeroSections);
 router.get("/get", getHeroSectionsForAll);
-router.post("/", authenticateUser, upload.single("file"), addHeroSections);
-router.put("/:id", authenticateUser, upload.single("file"), updateHeroSections);
+// router.post("/", authenticateUser, upload.single("file"), addHeroSections);
+router.post("/", authenticateUser, addHeroSections);
+// router.put("/:id", authenticateUser, upload.single("file"), updateHeroSections);
+router.put("/:id", authenticateUser, updateHeroSections);
 router.delete("/:id", authenticateUser, deleteHeroSections);
 
 module.exports = router;
