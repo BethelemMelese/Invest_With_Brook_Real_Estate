@@ -14,12 +14,10 @@ const { confirm } = Modal;
 
 interface ItemState {
   title: string;
-  speakerRole: string;
 }
 
 const initialState: ItemState = {
   title: "",
-  speakerRole: "",
 };
 
 type TablePaginationConfig = Exclude<
@@ -80,11 +78,6 @@ const Agents = () => {
     {
       title: "Name",
       dataIndex: "title",
-      sorter: true,
-    },
-    {
-      title: "Role",
-      dataIndex: "speakerRole",
       sorter: true,
     },
     {

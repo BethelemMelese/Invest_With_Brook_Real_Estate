@@ -9,9 +9,6 @@ const GetAllUser = async (req, res) => {
         fullName: values.fullName,
         email: values.email,
         phone: values.phone,
-        profession: values.profession,
-        country: values.country,
-        city: values.city,
       };
     });
 
@@ -29,9 +26,6 @@ const RegisterUser = async (req, res) => {
       fullName: req.body.firstName + " " + req.body.lastName,
       phone: req.body.phone,
       email: req.body.email,
-      profession: req.body.profession,
-      country: req.body.country,
-      city: req.body.city,
     });
 
     res.status(200).json({
@@ -39,9 +33,6 @@ const RegisterUser = async (req, res) => {
       fullName: user.fullName,
       email: user.email,
       phone: user.phone,
-      profession: user.profession,
-      country: user.country,
-      city: user.city,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

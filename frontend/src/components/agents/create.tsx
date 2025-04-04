@@ -12,18 +12,16 @@ import { api } from "../../polices/api/axiosConfig";
 
 interface ItemState {
   title: string;
-  speakerRole: string;
   speakerDescription: string;
 }
 
 const initialState: ItemState = {
   title: "",
-  speakerRole: "",
   speakerDescription: "",
 };
-const AddSpeaker = ({ ...props }) => {
+const AddAgent = ({ ...props }) => {
   const [viewMode, setViewMode] = useState(props.viewMode);
-  const [selectedSpeaker, setSelectedSpeaker] = useState(props.selectedSpeaker);
+  const [selectedAgent, setSelectedAgent] = useState(props.selectedAgent);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [fileList, setFileList] = useState<any>();
   const [validFileFormat, setValidFileFormat] = useState(false);
@@ -36,19 +34,19 @@ const AddSpeaker = ({ ...props }) => {
 
   useEffect(() => {
     setViewMode(props.viewMode);
-    setSelectedSpeaker(props.selectedSpeaker);
+    setSelectedAgent(props.selectedAgent);
     if (props.viewMode === "new") {
       formik.resetForm({
         values: initialState,
       });
     }
-  }, [props.viewMode, props.selectedSpeaker]);
+  }, [props.viewMode, props.selectedAgent]);
 
   const onCreateSuccess = () => {
     setNotify({
       isOpen: true,
       type: "success",
-      message: "Speaker is Successfully Added !",
+      message: "Agent is Successfully Added !",
     });
     setTimeout(() => {
       setIsSubmitting(false);
@@ -71,7 +69,7 @@ const AddSpeaker = ({ ...props }) => {
     setNotify({
       isOpen: true,
       type: "success",
-      message: "Speaker is Successfully Updated !",
+      message: "Agent is Successfully Updated !",
     });
     setTimeout(() => {
       setIsSubmitting(false);
@@ -92,11 +90,10 @@ const AddSpeaker = ({ ...props }) => {
 
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Title is required"),
-    speakerRole: Yup.string().required("Role is required"),
   });
 
   const formik = useFormik({
-    initialValues: selectedSpeaker,
+    initialValues: selectedAgent,
     onSubmit: (values) => {
       if (viewMode == "new") {
         if (fileList == null) {
@@ -107,7 +104,6 @@ const AddSpeaker = ({ ...props }) => {
           const formData = new FormData();
           formData.append("file", fileList);
           formData.append("title", values.title);
-          formData.append("speakerRole", values.speakerRole);
           formData.append("speakerDescription", values.speakerDescription);
           api
             .post("agents", formData)
@@ -119,13 +115,12 @@ const AddSpeaker = ({ ...props }) => {
         const formData = new FormData();
         formData.append(
           "file",
-          fileList == null ? selectedSpeaker.speakerImage : fileList
+          fileList == null ? selectedAgent.speakerImage : fileList
         );
         formData.append("title", values.title);
-        formData.append("speakerRole", values.speakerRole);
         formData.append("speakerDescription", values.speakerDescription);
         api
-          .put(`agents/${selectedSpeaker.id}`, formData)
+          .put(`agents/${selectedAgent.id}`, formData)
           .then(() => onUpdateSuccess())
           .catch((error) => onUpdateError(error.response.data.message));
       }
@@ -162,7 +157,7 @@ const AddSpeaker = ({ ...props }) => {
           <h3
             style={{ marginRight: "87%", marginTop: "2%", marginBottom: "1%" }}
           >
-            {viewMode == "new" ? <b>Add Speaker</b> : <b>Modify Speaker</b>}
+            {viewMode == "new" ? <b>Add Agent</b> : <b>Modify Agent</b>}
           </h3>
         }
         extra={
@@ -175,7 +170,7 @@ const AddSpeaker = ({ ...props }) => {
           {viewMode != "new" && (
             <Avatar
               sx={{ width: 56, height: 56, marginBottom: 5 }}
-              src={selectedSpeaker.speakerImage}
+              src={selectedAgent.speakerImage}
             ></Avatar>
           )}
           <Grid container spacing={2}>
@@ -188,18 +183,6 @@ const AddSpeaker = ({ ...props }) => {
                 error={
                   formik.touched.title && formik.errors.title
                     ? formik.errors.title
-                    : ""
-                }
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Controls.Input
-                id="speakerRole"
-                label="Role"
-                {...formik.getFieldProps("speakerRole")}
-                error={
-                  formik.touched.speakerRole && formik.errors.speakerRole
-                    ? formik.errors.speakerRole
                     : ""
                 }
               />
@@ -225,7 +208,7 @@ const AddSpeaker = ({ ...props }) => {
                 beforeUpload={() => false}
               >
                 <ButtonAnt icon={<UploadOutlined translate={undefined} />}>
-                  Speaker Profile Photo
+                  Agent Profile Photo
                 </ButtonAnt>
                 <br />
                 {validFileFormat ? (
@@ -236,7 +219,7 @@ const AddSpeaker = ({ ...props }) => {
                 ) : null}
                 {fileRequired ? (
                   <span className="text-danger">
-                    Speaker Profile Photo is required
+                    Agent Profile Photo is required
                   </span>
                 ) : null}
               </Upload>
@@ -294,4 +277,4 @@ const AddSpeaker = ({ ...props }) => {
   );
 };
 
-export default AddSpeaker;
+export default AddAgent;

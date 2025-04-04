@@ -22,18 +22,6 @@ const userSchema = mongoose.Schema(
       type: String,
       required: [true, "Please insert First Name"],
     },
-    profession: {
-      type: String,
-      required: [true, "Please insert Profession"],
-    },
-    country: {
-      type: String,
-      required: [true, "Please insert Country"],
-    },
-    city: {
-      type: String,
-      required: [true, "Please insert City"],
-    },
   },
   { timestamp: true }
 );

@@ -23,27 +23,27 @@ var corsOptions = {
 };
 
 const allowedOrigins = [
-  // "https://investwithbrookrealestate.netlify.app"
-  "http://localhost:3000/"
+  "https://investwithbrookrealestate.netlify.app"
+  // "http://localhost:3000/"
 ];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(helmet());
 app.use(cookieParser());
-app.use(cors(corsOptions));
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (!origin || allowedOrigins.includes(origin)) {
-//         callback(null, origin);
-//       } else {
-//         callback(new Error("Not allowed by CORS"));
-//       }
-//     },
-//     credentials: true, // Allow cookies & authentication headers
-//   })
-// );
+// app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, origin);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, // Allow cookies & authentication headers
+  })
+);
 
 app.use(express.static("public"));
 

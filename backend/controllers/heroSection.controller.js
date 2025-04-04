@@ -14,6 +14,7 @@ const getHeroSections = async (req, res) => {
         headerTitle: value.headerTitle,
         subTitle: value.subTitle,
         heroImage: value.heroImage,
+        heroUrl:value.heroUrl
       };
     });
     res.status(200).json(response);
@@ -31,6 +32,7 @@ const getHeroSectionsForAll = async (req, res) => {
         headerTitle: value.headerTitle,
         subTitle: value.subTitle,
         heroImage: value.heroImage,
+        heroUrl:value.heroUrl
       };
     });
     res.status(200).json(response);
@@ -54,6 +56,7 @@ const addHeroSections = async (req, res) => {
         headerTitle: req.body.headerTitle,
         subTitle: req.body.subTitle,
         heroImage: req.file.path,
+        heroUrl:req.body.heroUrl
       };
       const heroSection = await HeroSection.create(formData);
 
@@ -62,6 +65,7 @@ const addHeroSections = async (req, res) => {
         headerTitle: heroSection.headerTitle,
         subTitle: heroSection.subTitle,
         heroImage: heroSection.heroImage,
+        heroUrl:heroSection.heroUrl
       });
     }
   } catch (error) {
@@ -81,12 +85,14 @@ const updateHeroSections = async (req, res) => {
       await HeroSection.findByIdAndUpdate(id, {
         headerTitle: req.body.headerTitle,
         subTitle: req.body.subTitle,
+        heroUrl:req.body.heroUrl
       });
     } else {
       await HeroSection.findByIdAndUpdate(id, {
         headerTitle: req.body.headerTitle,
         subTitle: req.body.subTitle,
         heroImage: req.file.path,
+        heroUrl:req.body.heroUrl
       });
     }
 
@@ -96,6 +102,7 @@ const updateHeroSections = async (req, res) => {
       headerTitle: updatedHeroSection.headerTitle,
       subTitle: updatedHeroSection.subTitle,
       heroImage: updatedHeroSection.heroImage,
+      heroUrl:updatedHeroSection.heroUrl
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

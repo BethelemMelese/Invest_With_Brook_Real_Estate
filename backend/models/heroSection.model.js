@@ -14,6 +14,10 @@ const heroSectionSchema = mongoose.Schema(
       type: String,
       required: [true, "Please insert the Hero Image"],
     },
+    heroUrl: {
+      type: String,
+      required: [true, "Please insert the Hero Url"],
+    },
   },
   {
     timestamps: true,
