@@ -12,12 +12,12 @@ import { api } from "../../polices/api/axiosConfig";
 
 interface ItemState {
   title: string;
-  speakerDescription: string;
+  agentDescription: string;
 }
 
 const initialState: ItemState = {
   title: "",
-  speakerDescription: "",
+  agentDescription: "",
 };
 const AddAgent = ({ ...props }) => {
   const [viewMode, setViewMode] = useState(props.viewMode);
@@ -104,7 +104,7 @@ const AddAgent = ({ ...props }) => {
           const formData = new FormData();
           formData.append("file", fileList);
           formData.append("title", values.title);
-          formData.append("speakerDescription", values.speakerDescription);
+          formData.append("agentDescription", values.agentDescription);
           api
             .post("agents", formData)
             .then(() => onCreateSuccess())
@@ -115,10 +115,10 @@ const AddAgent = ({ ...props }) => {
         const formData = new FormData();
         formData.append(
           "file",
-          fileList == null ? selectedAgent.speakerImage : fileList
+          fileList == null ? selectedAgent.agentImage : fileList
         );
         formData.append("title", values.title);
-        formData.append("speakerDescription", values.speakerDescription);
+        formData.append("agentDescription", values.agentDescription);
         api
           .put(`agents/${selectedAgent.id}`, formData)
           .then(() => onUpdateSuccess())
@@ -170,7 +170,7 @@ const AddAgent = ({ ...props }) => {
           {viewMode != "new" && (
             <Avatar
               sx={{ width: 56, height: 56, marginBottom: 5 }}
-              src={selectedAgent.speakerImage}
+              src={selectedAgent.agentImage}
             ></Avatar>
           )}
           <Grid container spacing={2}>
@@ -189,14 +189,14 @@ const AddAgent = ({ ...props }) => {
             </Grid>
             <Grid item xs={6}>
               <Controls.Input
-                id="speakerDescription"
+                id="agentDescription"
                 label="Description"
                 multiline
-                {...formik.getFieldProps("speakerDescription")}
+                {...formik.getFieldProps("agentDescription")}
                 error={
-                  formik.touched.speakerDescription &&
-                  formik.errors.speakerDescription
-                    ? formik.errors.speakerDescription
+                  formik.touched.agentDescription &&
+                  formik.errors.agentDescription
+                    ? formik.errors.agentDescription
                     : ""
                 }
               />

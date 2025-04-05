@@ -4,11 +4,11 @@ const multer = require("multer");
 const router = express.Router();
 
 const {
-  getSpeakers,
-  getSpeakersForAll,
-  addSpeakers,
-  updateSpeakers,
-  deleteSpeakers,
+  getAgents,
+  getAgentsForAll,
+  addAgents,
+  updateAgents,
+  deleteAgents,
 } = require("../controllers/agents.controller.js");
 const { authenticateUser } = require("../controllers/admin.controller.js");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
@@ -17,17 +17,17 @@ const cloudinary = require("../config/cloudinary.js");
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "speakers-images",
+    folder: "agents-images",
     format: async (req, file) => "jpg" || "png" || "jpeg",
     public_id: (req, file) => file.originalname,
   },
 });
 
 const upload = multer({ storage: storage });
-router.get("/", authenticateUser, getSpeakers);
-router.get("/allSpeaker", getSpeakersForAll);
-router.post("/", authenticateUser, upload.single("file"), addSpeakers);
-router.put("/:id", authenticateUser, upload.single("file"), updateSpeakers);
-router.delete("/:id", authenticateUser, deleteSpeakers);
+router.get("/", authenticateUser, getAgents);
+router.get("/allAgent", getAgentsForAll);
+router.post("/", authenticateUser, upload.single("file"), addAgents);
+router.put("/:id", authenticateUser, upload.single("file"), updateAgents);
+router.delete("/:id", authenticateUser, deleteAgents);
 
 module.exports = router;

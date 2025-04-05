@@ -124,21 +124,21 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="agents" className="speakers">
+      <section id="agents" className="agents">
         <h2>What to Expect</h2>
-        <div className="speaker-list">
+        <div className="agent-list">
           {response.length != 0 &&
             response.map((item: any) => {
               return (
-                <div className="speaker-card">
+                <div className="agent-card">
                   <img
-                    src={item.speakerImage}
+                    src={item.agentImage}
                     alt="Speaker 1"
-                    className="speaker-img"
+                    className="agent-img"
                   />
                   <h3>{item.title}</h3>
-                  <p className="speaker_Description">
-                    {item.speakerDescription}
+                  <p className="agent_Description">
+                    {item.agentDescription}
                   </p>
                 </div>
               );

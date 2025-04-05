@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 
-const speakersSchema = mongoose.Schema(
+const agentsSchema = mongoose.Schema(
   {
     title: {
       type: String,
       required: [true, "Please insert the Title"],
     },
-    speakerDescription: {
+    agentDescription: {
       type: String,
       required: false,
     },
-    speakerImage: {
+    agentImage: {
       type: String,
-      required: [true, "Please insert the Speaker Image"],
+      required: [true, "Please insert the Agent Image"],
     },
   },
   {
@@ -20,4 +20,4 @@ const speakersSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Speaker", speakersSchema);
+module.exports = mongoose.model("Agent", agentsSchema);

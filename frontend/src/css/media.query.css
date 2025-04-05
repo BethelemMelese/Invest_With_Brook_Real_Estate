@@ -65,17 +65,17 @@
     /* margin-left: 18%; */
   }
 
-  .speakers {
+  .agents {
     margin-top: 70%;
   }
 
-  .speaker-card {
+  .agent-card {
     margin: 0px auto;
     margin-top: 20px;
     scroll-snap-align: end;
   }
 
-  .speaker-list {
+  .agent-list {
     display: block;
     gap: 5px;
     margin: 0px auto;

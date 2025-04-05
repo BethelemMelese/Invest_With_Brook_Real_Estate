@@ -1,19 +1,19 @@
-const Speaker = require("../models/agents.model.js");
+const Agent = require("../models/agents.model.js");
 const dotenv = require("dotenv");
 const fs = require("fs-extra");
 
 // configuration file
 dotenv.config();
 
-const getSpeakers = async (req, res) => {
+const getAgents = async (req, res) => {
   try {
-    const speaker = await Speaker.find();
-    const response = speaker.map((value) => {
+    const agent = await Agent.find();
+    const response = agent.map((value) => {
       return {
         id: value._id,
         title: value.title,
-        speakerDescription: value.speakerDescription,
-        speakerImage: value.speakerImage,
+        agentDescription: value.agentDescription,
+        agentImage: value.agentImage,
       };
     });
     res.status(200).json(response);
@@ -22,15 +22,15 @@ const getSpeakers = async (req, res) => {
   }
 };
 
-const getSpeakersForAll = async (req, res) => {
+const getAgentsForAll = async (req, res) => {
   try {
-    const speaker = await Speaker.find();
-    const response = speaker.map((value) => {
+    const agent = await Agent.find();
+    const response = agent.map((value) => {
       return {
         id: value._id,
         title: value.title,
-        speakerDescription: value.speakerDescription,
-        speakerImage: value.speakerImage,
+        agentDescription: value.agentDescription,
+        agentImage: value.agentImage,
       };
     });
     res.status(200).json(response);
@@ -39,28 +39,28 @@ const getSpeakersForAll = async (req, res) => {
   }
 };
 
-const addSpeakers = async (req, res) => {
+const addAgents = async (req, res) => {
   try {
-    const existSpeaker = await Speaker.findOne({
+    const existAgent = await Agent.findOne({
       title: req.body.title,
     });
-    if (existSpeaker != null) {
+    if (existAgent != null) {
       return res.status(500).json({
-        message: "The Speaker is already exist, please insert new Speaker !",
+        message: "The Agent is already exist, please insert new Agent !",
       });
     } else {
       const formData = {
         title: req.body.title,
-        speakerDescription: req.body.speakerDescription,
-        speakerImage: req.file.path,
+        agentDescription: req.body.agentDescription,
+        agentImage: req.file.path,
       };
-      const speaker = await Speaker.create(formData);
+      const agent = await Agent.create(formData);
 
       res.status(200).json({
-        id: speaker._id,
-        title: speaker.title,
-        speakerDescription: speaker.speakerDescription,
-        speakerImage: speaker.speakerImage,
+        id: agent._id,
+        title: agent.title,
+        agentDescription: agent.agentDescription,
+        agentImage: agent.agentImage,
       });
     }
   } catch (error) {
@@ -68,60 +68,60 @@ const addSpeakers = async (req, res) => {
   }
 };
 
-const updateSpeakers = async (req, res) => {
+const updateAgents = async (req, res) => {
   try {
     const { id } = req.params;
-    const speaker = await Speaker.findById(id);
-    if (!speaker) {
-      return res.status(404).json({ message: "Speaker not Found !" });
+    const agent = await Agent.findById(id);
+    if (!agent) {
+      return res.status(404).json({ message: "Agent not Found !" });
     }
 
-    if (speaker.speakerImage == req.body.file) {
-      await Speaker.findByIdAndUpdate(id, {
+    if (agent.agentImage == req.body.file) {
+      await Agent.findByIdAndUpdate(id, {
         title: req.body.title,
-        speakerDescription: req.body.speakerDescription,
+        agentDescription: req.body.agentDescription,
       });
     } else {
-      await Speaker.findByIdAndUpdate(id, {
+      await Agent.findByIdAndUpdate(id, {
         title: req.body.title,
-        speakerRole: req.body.speakerRole,
-        speakerDescription: req.body.speakerDescription,
+        agentRole: req.body.agentRole,
+        agentDescription: req.body.agentDescription,
       });
     }
 
-    const updatedSpeaker = await Speaker.findById(id);
+    const updatedAgent = await Agent.findById(id);
     res.status(200).json({
-      id: updatedSpeaker._id,
-      title: updatedSpeaker.title,
-      speakerDescription: updatedSpeaker.speakerDescription,
+      id: updatedAgent._id,
+      title: updatedAgent.title,
+      agentDescription: updatedAgent.agentDescription,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-const deleteSpeakers = async (req, res) => {
+const deleteAgents = async (req, res) => {
   try {
     const { id } = req.params;
     const path = process.env.FILE_PATH;
-    const speaker = await Speaker.findById(id);
+    const agent = await Agent.findById(id);
 
-    if (!speaker) {
-      return res.status(404).json({ message: "Speaker not Found !" });
+    if (!agent) {
+      return res.status(404).json({ message: "Agent not Found !" });
     }
-    await Speaker.findByIdAndDelete(id);
-    await fs.remove(path + speaker.title);
+    await Agent.findByIdAndDelete(id);
+    await fs.remove(path + agent.title);
 
-    res.status(200).json({ message: "Speaker is Successfully Delete !" });
+    res.status(200).json({ message: "Agent is Successfully Delete !" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
 };
 
 module.exports = {
-  getSpeakers,
-  getSpeakersForAll,
-  addSpeakers,
-  updateSpeakers,
-  deleteSpeakers,
+  getAgents,
+  getAgentsForAll,
+  addAgents,
+  updateAgents,
+  deleteAgents,
 };

@@ -66,8 +66,8 @@ const Agents = () => {
       render: (record: any) => {
         return (
           <>
-            {record.speakerImage != undefined ? (
-              <Avatar src={record.speakerImage} variant="circular"></Avatar>
+            {record.agentImage != undefined ? (
+              <Avatar src={record.agentImage} variant="circular"></Avatar>
             ) : (
               <Avatar />
             )}

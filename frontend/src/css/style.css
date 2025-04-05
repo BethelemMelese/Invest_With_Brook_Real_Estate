@@ -167,18 +167,18 @@ body {
   border-radius: 50px;
 }
 
-.speakers,
+.agents,
 .registration {
   text-align: center;
   padding: 50px 20px;
 }
 
 /* Speakers Section*/
-.speakers {
+.agents {
   box-shadow: 0px 1px 2cap rgba(0, 0, 0, 0.1);
 }
 
-.speaker-list {
+.agent-list {
   max-width: 100%;
   overflow-x: auto;
   white-space: nowrap;
@@ -195,11 +195,11 @@ body {
   text-align: center;
 }
 
-.speaker-card::-webkit-scrollbar {
+.agent-card::-webkit-scrollbar {
   display: none;
 }
 
-.speaker-card {
+.agent-card {
   flex: 0 0 auto;
   width: 300px;
   height: 400px;
@@ -215,19 +215,19 @@ body {
   scroll-snap-align: start;
 }
 
-.speaker-card img {
+.agent-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.speaker-card p {
+.agent-card p {
   font-size: 14px;
   color: #666;
   /* margin-top: 5px; */
 }
 
-.speaker_Description {
+.agent_Description {
   font-size: 14px;
   color: #666;
   margin-top: -5px;
