@@ -4,7 +4,7 @@ import { appUrl } from "../../appurl";
 import Notification from "../../commonComponent/notification";
 import { Card, GetProp, Modal, Space, Table, TableProps } from "antd";
 import { Avatar, Button, IconButton, Tooltip } from "@mui/material";
-import AddSpeaker from "./create";
+import AddAgent from "./create";
 import { EditOutlined } from "@mui/icons-material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import { ExclamationCircleFilled } from "@ant-design/icons";
@@ -14,10 +14,12 @@ const { confirm } = Modal;
 
 interface ItemState {
   title: string;
+  agentDescription: string;
 }
 
 const initialState: ItemState = {
   title: "",
+  agentDescription: "",
 };
 
 type TablePaginationConfig = Exclude<
@@ -44,7 +46,7 @@ const Agents = () => {
   const [data, setData] = useState<DataType[]>();
   const [loading, setLoading] = useState(false);
   const [viewMode, setViewMode] = useState("view");
-  const [selectedSpeaker, setSelectedSpeaker] = useState<any>();
+  const [selectedAgent, setSelectedAgent] = useState<any>();
   const [tableParams, setTableParams] = useState<TableParams>({
     pagination: {
       current: 1,
@@ -67,7 +69,7 @@ const Agents = () => {
         return (
           <>
             {record.agentImage != undefined ? (
-              <Avatar src={record.agentImage} variant="circular"></Avatar>
+              <Avatar src={record.agentImage} variant="rounded"></Avatar>
             ) : (
               <Avatar />
             )}
@@ -89,7 +91,7 @@ const Agents = () => {
             <Tooltip title="Edit">
               <IconButton
                 onClick={() => {
-                  setSelectedSpeaker(record);
+                  setSelectedAgent(record);
                   setViewMode("edit");
                 }}
                 aria-label="edit"
@@ -235,18 +237,18 @@ const Agents = () => {
       )}
 
       {viewMode == "new" && (
-        <AddSpeaker
+        <AddAgent
           //@ts-ignore
-          selectedSpeaker={initialState}
+          selectedAgent={initialState}
           viewMode={viewMode}
           closeedit={() => setViewMode("view")}
         />
       )}
 
       {viewMode == "edit" && (
-        <AddSpeaker
+        <AddAgent
           //@ts-ignore
-          selectedSpeaker={selectedSpeaker}
+          selectedAgent={selectedAgent}
           viewMode={viewMode}
           closeedit={() => setViewMode("view")}
         />
