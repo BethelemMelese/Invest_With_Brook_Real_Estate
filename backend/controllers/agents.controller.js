@@ -76,7 +76,7 @@ const updateAgents = async (req, res) => {
       return res.status(404).json({ message: "Agent not Found !" });
     }
 
-    if (agent.agentImage == req.body.file) {
+    if (agent.agentImage == req.file.path) {
       await Agent.findByIdAndUpdate(id, {
         title: req.body.title,
         agentDescription: req.body.agentDescription,
@@ -84,8 +84,8 @@ const updateAgents = async (req, res) => {
     } else {
       await Agent.findByIdAndUpdate(id, {
         title: req.body.title,
-        agentRole: req.body.agentRole,
         agentDescription: req.body.agentDescription,
+        agentImage: req.file.path,
       });
     }
 
@@ -94,6 +94,7 @@ const updateAgents = async (req, res) => {
       id: updatedAgent._id,
       title: updatedAgent.title,
       agentDescription: updatedAgent.agentDescription,
+      agentImage: updatedAgent.agentImage,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

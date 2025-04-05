@@ -83,6 +83,11 @@ const Agents = () => {
       sorter: true,
     },
     {
+      title: "Description",
+      dataIndex: "agentDescription",
+      sorter: true,
+    },
+    {
       title: "Action",
       dataIndex: "",
       render: (record: any) => {
