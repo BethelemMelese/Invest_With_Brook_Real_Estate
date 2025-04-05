@@ -6,20 +6,19 @@ import { Form } from "../../commonComponent/Form";
 import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 import Notification from "../../commonComponent/notification";
 import { Card, Upload, Button as ButtonAnt } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
 import Controls from "../../commonComponent/Controls";
 import { api } from "../../polices/api/axiosConfig";
 
 interface ItemState {
   headerTitle: string;
   subTitle: string;
-  url: string;
+  heroUrl: string;
 }
 
 const initialState: ItemState = {
   headerTitle: "",
   subTitle: "",
-  url: "",
+  heroUrl: "",
 };
 const AddHeroSection = ({ ...props }) => {
   const [viewMode, setViewMode] = useState(props.viewMode);
@@ -27,9 +26,6 @@ const AddHeroSection = ({ ...props }) => {
     props.selectedHeroSection
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [fileList, setFileList] = useState<any>();
-  const [validFileFormat, setValidFileFormat] = useState(false);
-  const [fileRequired, setFileRequired] = useState(false);
   const [notify, setNotify] = useState({
     isOpen: false,
     message: "",
@@ -95,39 +91,19 @@ const AddHeroSection = ({ ...props }) => {
   const validationSchema = Yup.object().shape({
     headerTitle: Yup.string().required("Header Title is required"),
     subTitle: Yup.string().required("Sub Header Title is required"),
-    url: Yup.string().required("Url Link is required"),
+    heroUrl: Yup.string().required("Url Link is required"),
   });
 
   const formik = useFormik({
     initialValues: selectedHeroSection,
     onSubmit: (values) => {
       if (viewMode == "new") {
-        // if (fileList == null) {
-        //   setFileRequired(true);
-        // } else {
-        //   setFileRequired(false);
-        // const formData = new FormData();
-        // formData.append("file", fileList);
-        // formData.append("headerTitle", values.headerTitle);
-        // formData.append("subTitle", values.subTitle);
-        // }
         setIsSubmitting(true);
         api
           .post("heroSections", values)
           .then(() => onCreateSuccess())
           .catch((error) => onCreateError(error.response.data.message));
       } else {
-        // const formData = new FormData();
-        // formData.append(
-        //   "file",
-        //   fileList == null ? selectedHeroSection.heroImage : fileList
-        // );
-        // formData.append("headerTitle", values.headerTitle);
-        // formData.append("subTitle", values.subTitle);
-        // api
-        //   .put(`heroSections/${selectedHeroSection.id}`, formData)
-        //   .then(() => onUpdateSuccess())
-        //   .catch((error) => onUpdateError(error.response.data.message));
         setIsSubmitting(true);
         api
           .put(`heroSections/${selectedHeroSection.id}`, values)
@@ -138,27 +114,6 @@ const AddHeroSection = ({ ...props }) => {
     validationSchema: validationSchema,
   });
 
-  const validFile = () => {
-    if (fileList == null) {
-      setFileRequired(true);
-    } else {
-      setFileRequired(false);
-    }
-  };
-
-  const beforeUpload = (file: any): any => {
-    if (
-      file.type === "image/jpg" ||
-      file.type == "image/jpeg" ||
-      file.type == "image/png"
-    ) {
-      setValidFileFormat(false);
-      setFileRequired(false);
-      setFileList(file);
-    } else {
-      setValidFileFormat(true);
-    }
-  };
 
   return (
     <div>
@@ -217,38 +172,17 @@ const AddHeroSection = ({ ...props }) => {
             </Grid>
             <Grid item xs={6}>
               <Controls.Input
-                id="url"
+                id="heroUrl"
                 label="Url Link"
                 multiline
-                {...formik.getFieldProps("url")}
+                {...formik.getFieldProps("heroUrl")}
                 error={
-                  formik.touched.url && formik.errors.url
-                    ? formik.errors.url
+                  formik.touched.heroUrl && formik.errors.heroUrl
+                    ? formik.errors.heroUrl
                     : ""
                 }
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <Upload
-                listType="picture"
-                onChange={(response: any) => beforeUpload(response.file)}
-                beforeUpload={() => false}
-              >
-                <ButtonAnt icon={<UploadOutlined translate={undefined} />}>
-                  Hero Image
-                </ButtonAnt>
-                <br />
-                {validFileFormat ? (
-                  <span className="text-danger">
-                    Invalid file format, Only jpg, jpeg and png files are
-                    allowed!
-                  </span>
-                ) : null}
-                {fileRequired ? (
-                  <span className="text-danger">Hero Image is required</span>
-                ) : null}
-              </Upload>
-            </Grid> */}
           </Grid>
 
           <Grid item xs={12}>

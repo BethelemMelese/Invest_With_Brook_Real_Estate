@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import Notification from "../../commonComponent/notification";
 import { Card, GetProp, Modal, Space, Table, TableProps } from "antd";
-import { Avatar, Button, IconButton, Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import AddHeroSection from "./create";
 import { EditOutlined } from "@mui/icons-material";
-import { ExclamationCircleFilled } from "@ant-design/icons";
 import { api } from "../../polices/api/axiosConfig";
 
-
-const { confirm } = Modal;
-
 interface ItemState {
-  title: string;
+  headerTitle: string;
+  subTitle: string;
+  heroUrl: string;
 }
 
 const initialState: ItemState = {
-  title: "",
+  headerTitle: "",
+  subTitle: "",
+  heroUrl: "",
 };
 
 type TablePaginationConfig = Exclude<
@@ -133,24 +133,6 @@ const HeroSection = () => {
       message: response,
     });
   };
-
-  const onDeleteSuccess = (response: any) => {
-    setNotify({
-      isOpen: true,
-      type: "success",
-      message: response.message,
-    });
-    onFetchAdmin();
-  };
-
-  const onDeleteError = (response: any) => {
-    setNotify({
-      isOpen: true,
-      message: response,
-      type: "error",
-    });
-  };
-
 
   useEffect(() => {
     setLoading(true);
