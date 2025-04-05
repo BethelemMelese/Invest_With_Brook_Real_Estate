@@ -30,7 +30,7 @@ const Navbar = () => {
         </IconButton>
       </div>
       <div className="top-bar-logo">
-        <img alt="Grand Habesha Event Logo" src={Image} />
+        <img alt="Brook Real Estate Logo" src={Image} />
       </div>
 
       <ul className={`nav-links ${isOpen ? "open" : ""}`}>

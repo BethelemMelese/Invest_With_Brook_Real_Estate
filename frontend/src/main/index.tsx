@@ -115,7 +115,7 @@ const Home = () => {
                   </div>
 
                   <div className="hero-video">
-                    <ReactPlayer autoplay url={item.heroUrl} />
+                    <ReactPlayer autoplay playing={true} url={item.heroUrl} />
                     {/* <img src={item.heroImage} alt="Business Event" /> */}
                   </div>
                 </>
