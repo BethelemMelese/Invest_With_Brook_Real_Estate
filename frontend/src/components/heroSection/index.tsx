@@ -58,21 +58,6 @@ const HeroSection = () => {
 
   const columns: any = [
     {
-      title: "Hero Image",
-      dataIndex: "",
-      render: (record: any) => {
-        return (
-          <>
-            {record.heroImage != undefined ? (
-              <Avatar src={record.heroImage} variant="rounded"></Avatar>
-            ) : (
-              <Avatar />
-            )}
-          </>
-        );
-      },
-    },
-    {
       title: "Header Title",
       dataIndex: "headerTitle",
       sorter: true,
@@ -84,7 +69,7 @@ const HeroSection = () => {
     },
     {
       title: "Url Link",
-      dataIndex: "url",
+      dataIndex: "heroUrl",
       sorter: true,
     },
     {
