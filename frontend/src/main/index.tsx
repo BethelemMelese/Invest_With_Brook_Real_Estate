@@ -85,7 +85,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get(appUrl + "agents/allSpeaker")
+      .get(appUrl + "agents/allAgent")
       .then((response) => setResponse(response.data))
       .catch((error) => onFetchError(error.response.data.message));
   }, []);
@@ -133,7 +133,7 @@ const Home = () => {
                 <div className="agent-card">
                   <img
                     src={item.agentImage}
-                    alt="Speaker 1"
+                    alt="Agent 1"
                     className="agent-img"
                   />
                   <h3>{item.title}</h3>
